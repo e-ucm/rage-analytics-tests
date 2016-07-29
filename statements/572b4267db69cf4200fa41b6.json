@@ -1,0 +1,104 @@
+[
+    {
+        "id": "2e707fc7-0089-460f-bda6-ad42bfc125ce",
+        "actor": {
+            "name": "572b4267db69cf4200fa41b585588",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/launched"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-05T14:54:02Z"
+    },
+    {
+        "id": "0f545e75-bb34-42cc-9498-09180d5d15c3",
+        "actor": {
+            "name": "572b4267db69cf4200fa41b585588",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/launched"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/_session",
+            "definition": {}
+        },
+        "timestamp": "2016-05-05T14:53:37Z"
+    },
+    {
+        "id": "79e5a812-518d-477b-99a7-804cc41da15e",
+        "actor": {
+            "name": "572b4267db69cf4200fa41b585588",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/MoroccoCapital",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Casablanca"
+        },
+        "timestamp": "2016-05-05T14:54:05Z"
+    },
+    {
+        "id": "8308c318-a501-4d9e-9388-b37dec1f8be6",
+        "actor": {
+            "name": "572b4267db69cf4200fa41b585588",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/decreased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/time",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "5"
+            }
+        },
+        "timestamp": "2016-05-05T14:54:05Z"
+    },
+    {
+        "id": "6f856277-81b1-4c62-831d-bd55801a66fa",
+        "actor": {
+            "name": "572b4267db69cf4200fa41b585588",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/terminated"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-05T15:02:23Z"
+    }
+]

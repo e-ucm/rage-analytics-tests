@@ -1,0 +1,284 @@
+[
+    {
+        "id": "21b95361-6934-4dd1-bc89-f5b9ee824482",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/JapanContinent",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "America"
+        },
+        "timestamp": "2016-05-05T12:27:03Z"
+    },
+    {
+        "id": "59dde20b-b348-43cc-81d0-938246cdb61f",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/decreased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/time",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "5.0"
+            }
+        },
+        "timestamp": "2016-05-05T12:27:01Z"
+    },
+    {
+        "id": "44a53108-8945-416a-9456-f5a3c0a4a99a",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/IndiaIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Israel"
+        },
+        "timestamp": "2016-05-05T12:27:02Z"
+    },
+    {
+        "id": "7f164d3b-04e9-434a-b346-8b51ce239ac2",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/terminated"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-05T12:27:04Z"
+    },
+    {
+        "id": "f6350fa1-2a91-4e9d-a919-a2f300876645",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/launched"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/_session",
+            "definition": {}
+        },
+        "timestamp": "2016-05-05T12:26:46Z"
+    },
+    {
+        "id": "0415e9e6-df37-4e52-a2aa-fed00152656f",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/terminated"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-05T12:27:36Z"
+    },
+    {
+        "id": "6efe07d5-03cf-447a-bdf7-4b2a9cf97f7e",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/decreased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/time",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "5.0"
+            }
+        },
+        "timestamp": "2016-05-05T12:27:03Z"
+    },
+    {
+        "id": "f8048994-e9bc-4eb6-91c1-1477ffe57abe",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/launched"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-05T12:27:06Z"
+    },
+    {
+        "id": "d385f061-c6fc-4ad2-b437-98dcb376aadd",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/South_KoreaIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Lebanon"
+        },
+        "timestamp": "2016-05-05T12:26:59Z"
+    },
+    {
+        "id": "c152430d-e2ff-4df9-b6cd-19639403effa",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/decreased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/time",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "5.0"
+            }
+        },
+        "timestamp": "2016-05-05T12:26:59Z"
+    },
+    {
+        "id": "0295bfc2-04e5-4295-be7a-c3c2cb5ac285",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/decreased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/time",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "5.0"
+            }
+        },
+        "timestamp": "2016-05-05T12:27:02Z"
+    },
+    {
+        "id": "fe4ae82d-2125-4cfb-830b-e829dd64420c",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/CanadaIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "El Salvador"
+        },
+        "timestamp": "2016-05-05T12:27:01Z"
+    },
+    {
+        "id": "d007b045-3ccc-4412-8a28-0d54f571b496",
+        "actor": {
+            "name": "572b1fc8db69cf4200fa41a943192",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/launched"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-05T12:26:54Z"
+    }
+]

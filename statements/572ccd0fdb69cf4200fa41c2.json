@@ -1,0 +1,713 @@
+[
+    {
+        "id": "f43a3a9e-4091-40b0-9bca-1a1a5ed58d87",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/United_Arab_EmiratesFlag",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "United Arab Emirates"
+        },
+        "timestamp": "2016-05-06T18:58:52Z"
+    },
+    {
+        "id": "27a297c9-6cfe-46be-81a3-615d3feacdb2",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "3"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:52Z"
+    },
+    {
+        "id": "16280a92-38ac-4cc4-95bd-1ec24432f697",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/RussiaCapital",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Moscow"
+        },
+        "timestamp": "2016-05-06T18:58:55Z"
+    },
+    {
+        "id": "2b6b350e-64cf-4fee-80a1-43b8b10a64a5",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:55Z"
+    },
+    {
+        "id": "c11215f9-be2c-4c74-a6ad-dc894bf93b07",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:59:02Z"
+    },
+    {
+        "id": "e6be95b7-3749-47cc-a764-edf0a6297ef2",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:59:09Z"
+    },
+    {
+        "id": "7d56e80f-0948-48ce-a29b-17ff8cec3a9a",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "5"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:59Z"
+    },
+    {
+        "id": "f16209e9-9248-4b95-aaa1-bb95afa10d23",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:47Z"
+    },
+    {
+        "id": "6fd4025a-5ef7-42dd-a776-4df3a698df48",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:52Z"
+    },
+    {
+        "id": "f0ef98ae-042a-4de4-a214-acc0a910634f",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/South_KoreaIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "South Korea"
+        },
+        "timestamp": "2016-05-06T18:59:09Z"
+    },
+    {
+        "id": "2449f053-ce57-4c17-aad2-b8c48d5d39c0",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/MadagascarIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Madagascar"
+        },
+        "timestamp": "2016-05-06T18:59:05Z"
+    },
+    {
+        "id": "df9643c3-29d0-45d1-921e-6a7fb1bb161b",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/New_ZealandContinent",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Oceania"
+        },
+        "timestamp": "2016-05-06T18:58:44Z"
+    },
+    {
+        "id": "67f72078-231b-4765-90a9-c93b05985951",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:44Z"
+    },
+    {
+        "id": "5cbb86dd-5468-4f39-a1dd-73c8fbd65aa1",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/JapanIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Japan"
+        },
+        "timestamp": "2016-05-06T18:58:47Z"
+    },
+    {
+        "id": "8cd8e59e-3ed3-41c9-8305-8630486a996e",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "8"
+            }
+        },
+        "timestamp": "2016-05-06T18:59:09Z"
+    },
+    {
+        "id": "91ee5cd5-2083-4963-92af-f011a796e7d4",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "4"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:55Z"
+    },
+    {
+        "id": "084b0c1f-1f36-4cde-9b6f-e68e0b0a4f2e",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/New_ZealandContinent",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Oceania"
+        },
+        "timestamp": "2016-05-06T18:58:44Z"
+    },
+    {
+        "id": "ea27c25a-0323-4c95-af02-e58949156ea5",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:44Z"
+    },
+    {
+        "id": "b1b0356b-f611-4cb9-ae98-d4468ec4bc3c",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:44Z"
+    },
+    {
+        "id": "8cb179e0-8bba-481d-8923-132cc002aef2",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/IsraelContinent",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Asia"
+        },
+        "timestamp": "2016-05-06T18:58:59Z"
+    },
+    {
+        "id": "62d45eab-3da1-4001-a11c-6b615dbe131a",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:59Z"
+    },
+    {
+        "id": "b9a93ebe-d87b-4cba-a51f-87f46d539c7d",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:59:05Z"
+    },
+    {
+        "id": "e86edabb-fee4-4538-8614-c4f05c80d088",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/preferred"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternative/MaltaFlag",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Malta"
+        },
+        "timestamp": "2016-05-06T18:59:02Z"
+    },
+    {
+        "id": "38ec6853-3e3a-46ed-bd7d-77fd42ab72df",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/terminated"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-06T18:59:10Z"
+    },
+    {
+        "id": "3eb764ee-75f3-419b-b938-31331fe0ea89",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:44Z"
+    },
+    {
+        "id": "5e89067a-0445-437e-bc51-3c97a418212a",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "2"
+            }
+        },
+        "timestamp": "2016-05-06T18:58:47Z"
+    },
+    {
+        "id": "923faba0-45a3-409e-aa0f-fc637b5943e7",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "7"
+            }
+        },
+        "timestamp": "2016-05-06T18:59:05Z"
+    },
+    {
+        "id": "bc3bd562-d9d2-4d26-a950-d9ac79d4b235",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://rage-eu.com/xapi/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/variable/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "http://rage-eu.com/xapi/extensions/value": "6"
+            }
+        },
+        "timestamp": "2016-05-06T18:59:02Z"
+    },
+    {
+        "id": "8aa3e637-d0c4-47af-8706-1c5d1ac7c43c",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/launched"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/_session",
+            "definition": {}
+        },
+        "timestamp": "2016-05-06T18:58:15Z"
+    },
+    {
+        "id": "3933edff-7bea-44d2-8a70-6310c3685a06",
+        "actor": {
+            "name": "572ccd0fdb69cf4200fa41c118995",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/launched"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-06T18:58:40Z"
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "id": "7870a3cc-5462-45e8-9510-8fbe323059ab",
+        "actor": {
+            "name": "57231da96e8f9b420029dca73649",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/terminated"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-04-29T10:39:40Z"
+    },
+    {
+        "id": "7fd09570-5666-4eb4-9b4d-2a362c0f3b88",
+        "actor": {
+            "name": "57231da96e8f9b420029dca73649",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/launched"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/_session",
+            "definition": {}
+        },
+        "timestamp": "2016-04-29T10:39:03Z"
+    },
+    {
+        "id": "f3b4775d-c646-4931-9b9e-6ebfaca9a782",
+        "actor": {
+            "name": "57231da96e8f9b420029dca73649",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/launched"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-04-29T10:39:10Z"
+    }
+]

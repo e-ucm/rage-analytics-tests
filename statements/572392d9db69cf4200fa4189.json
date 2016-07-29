@@ -1,0 +1,20 @@
+[
+    {
+        "id": "a4d46335-9ed4-467e-a33c-87f03987912f",
+        "actor": {
+            "name": "572392d9db69cf4200fa418863434",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/xapi/verbs/launched"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completable/_session",
+            "definition": {}
+        },
+        "timestamp": "2016-04-29T18:59:03Z"
+    }
+]

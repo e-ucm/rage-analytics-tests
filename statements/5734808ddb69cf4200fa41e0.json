@@ -1,0 +1,20 @@
+[
+    {
+        "id": "6f551f15-6b97-45df-82e3-5c042e7d36b7",
+        "actor": {
+            "name": "5734808ddb69cf4200fa41df14901",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/started"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completables/_session",
+            "definition": {}
+        },
+        "timestamp": "2016-05-12T15:09:19Z"
+    }
+]

@@ -1,0 +1,973 @@
+[
+    {
+        "id": "f6a6769b-67bb-4e68-873f-a1960cb13f71",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/SpainFlag",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Spain"
+        },
+        "timestamp": "2016-05-12T15:08:49Z"
+    },
+    {
+        "id": "3034bb34-36ad-48c6-ad5e-f195c6c47b25",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:49Z"
+    },
+    {
+        "id": "c46918c9-5fbf-4529-a024-c9096eea8556",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:09:01Z"
+    },
+    {
+        "id": "afcfa1c2-e115-4587-a2d6-41eb28cac783",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:09:07Z"
+    },
+    {
+        "id": "21f53421-c68b-454a-9975-4b6964cd33cc",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "7"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:59Z"
+    },
+    {
+        "id": "8db9564e-6968-47e8-a782-91e6f108aa8f",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "3"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:52Z"
+    },
+    {
+        "id": "e22c050a-8ae3-4650-b3ca-ac333468294d",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/started"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completables/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-12T15:08:48Z"
+    },
+    {
+        "id": "b9a5f3d1-d5ef-44f0-a28e-24a397732f3d",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:59Z"
+    },
+    {
+        "id": "ec0002b7-ea3b-48a3-93b9-7f3eed7ce588",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:57Z"
+    },
+    {
+        "id": "05531f0e-1ee4-4e11-b0ce-74145a336ed9",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/Republic_of_IrelandCapital",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Dublin"
+        },
+        "timestamp": "2016-05-12T15:08:55Z"
+    },
+    {
+        "id": "cc8a6ecd-a087-434d-b69a-5410c6966e95",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/KiribatiFlag",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Kiribati"
+        },
+        "timestamp": "2016-05-12T15:08:52Z"
+    },
+    {
+        "id": "0529086e-e0a6-4f56-bba5-5e2fcf1370ab",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/IndiaFlag",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "India"
+        },
+        "timestamp": "2016-05-12T15:08:50Z"
+    },
+    {
+        "id": "ef82fa0b-420a-48ce-97c3-2cf053090453",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/started"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completables/_session",
+            "definition": {}
+        },
+        "timestamp": "2016-05-12T15:08:46Z"
+    },
+    {
+        "id": "c68e4e8e-4f52-4a50-8b29-6f39d00203c3",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/IsraelIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Israel"
+        },
+        "timestamp": "2016-05-12T15:09:01Z"
+    },
+    {
+        "id": "b3bfa230-7bf5-4aa9-8056-458f85d0ffbd",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/PortugalCapital",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Porto"
+        },
+        "timestamp": "2016-05-12T15:09:03Z"
+    },
+    {
+        "id": "79e54431-daaa-4377-bcde-829e439380a6",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/RussiaFlag",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Russia"
+        },
+        "timestamp": "2016-05-12T15:09:06Z"
+    },
+    {
+        "id": "a5ec27c1-2151-4a7f-9f89-2cd9abd31500",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "9"
+            }
+        },
+        "timestamp": "2016-05-12T15:09:06Z"
+    },
+    {
+        "id": "380ca14f-abe0-4b17-9b28-5da6da305cc8",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:09:06Z"
+    },
+    {
+        "id": "8ac0e68b-7b71-4988-8f93-94f066c27462",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "2"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:50Z"
+    },
+    {
+        "id": "2004fde3-775f-4f97-851a-cf480d0db437",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/AustraliaIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Australia"
+        },
+        "timestamp": "2016-05-12T15:08:54Z"
+    },
+    {
+        "id": "a92ac70b-6135-4aa4-af6b-12b822289129",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/MoroccoFlag",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Morocco"
+        },
+        "timestamp": "2016-05-12T15:08:59Z"
+    },
+    {
+        "id": "9257069b-4c95-4c18-9100-991a227e8d22",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:09:15Z"
+    },
+    {
+        "id": "5a13ae79-1d89-48dd-afad-51282dbbfef6",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "10"
+            }
+        },
+        "timestamp": "2016-05-12T15:09:07Z"
+    },
+    {
+        "id": "cd50a576-9ec9-4629-a6ef-44c344f57338",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/started"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completables/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-12T15:09:13Z"
+    },
+    {
+        "id": "7c832ec4-1ea2-42ae-88d7-7e46d7962fc7",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:50Z"
+    },
+    {
+        "id": "fdb894f6-824e-42a7-9782-a9adfedbdb3a",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:52Z"
+    },
+    {
+        "id": "fb23a530-7e77-4d68-a14b-d5c71645a079",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:09:15Z"
+    },
+    {
+        "id": "72e62b84-e561-4d77-9b00-a608151a635c",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "6"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:57Z"
+    },
+    {
+        "id": "4e73480c-0bb0-464d-92c9-cc74c9549cf4",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "4"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:54Z"
+    },
+    {
+        "id": "287b67bc-a3a2-4db8-8916-2cac98ec6def",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:54Z"
+    },
+    {
+        "id": "7f8f8a62-0ebf-4900-82e7-c995fbe12d4d",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:49Z"
+    },
+    {
+        "id": "d5d6fa39-4f61-4d49-8547-da5c93ed7cfa",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/Antigua_and_BarbudaFlag",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Venezuela"
+        },
+        "timestamp": "2016-05-12T15:09:11Z"
+    },
+    {
+        "id": "4ad2f761-a5ec-4c07-94d6-dded37a90d3e",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/decreased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/time",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "5.0"
+            }
+        },
+        "timestamp": "2016-05-12T15:09:11Z"
+    },
+    {
+        "id": "f0bd6286-156f-4cab-91b7-c54430aba6b9",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "5"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:55Z"
+    },
+    {
+        "id": "845770b6-231c-4d70-9fed-afe2d92a3cc6",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-12T15:08:55Z"
+    },
+    {
+        "id": "88e13ff0-2af7-43dc-b6f7-f138cf51a43c",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/decreased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/time",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "5.0"
+            }
+        },
+        "timestamp": "2016-05-12T15:09:03Z"
+    },
+    {
+        "id": "c3872adf-ee0f-482c-bad1-de0912878910",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "8"
+            }
+        },
+        "timestamp": "2016-05-12T15:09:01Z"
+    },
+    {
+        "id": "7d363537-9cf8-48f4-aef2-6ca908d00a22",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/CanadaIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Canada"
+        },
+        "timestamp": "2016-05-12T15:08:57Z"
+    },
+    {
+        "id": "acf595c8-c74e-4759-95dc-9810f4bcda17",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/EgyptIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Egypt"
+        },
+        "timestamp": "2016-05-12T15:09:15Z"
+    },
+    {
+        "id": "780ef914-adba-4d6a-8a90-fca53f5bc6b5",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/JapanFlag",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Japan"
+        },
+        "timestamp": "2016-05-12T15:09:07Z"
+    },
+    {
+        "id": "11b3eab1-13ec-409f-9253-8e0489d02341",
+        "actor": {
+            "name": "5734806cdb69cf4200fa41dc80541",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "http://adlnet.gov/expapi/verbs/completed"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completables/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-12T15:09:11Z"
+    }
+]

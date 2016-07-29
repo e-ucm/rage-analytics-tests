@@ -1,0 +1,159 @@
+[
+    {
+        "id": "9740f3b7-ba33-48fa-af78-d8d4582b78b8",
+        "actor": {
+            "name": "5731c08fdb69cf4200fa41cd98946",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/started"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completables/Questions",
+            "definition": {}
+        },
+        "timestamp": "2016-05-10T13:05:40Z"
+    },
+    {
+        "id": "437efc70-2242-40e0-8187-0e7344264f07",
+        "actor": {
+            "name": "5731c08fdb69cf4200fa41cd98946",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/started"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/completables/_session",
+            "definition": {}
+        },
+        "timestamp": "2016-05-10T13:05:39Z"
+    },
+    {
+        "id": "45e1a9fe-3bbc-4a42-b19b-c9f4c2d796b1",
+        "actor": {
+            "name": "5731c08fdb69cf4200fa41cd98946",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/decreased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/time",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "5.0"
+            }
+        },
+        "timestamp": "2016-05-10T13:05:41Z"
+    },
+    {
+        "id": "ba495670-9ff2-4469-8b2e-0ecf10b74b7c",
+        "actor": {
+            "name": "5731c08fdb69cf4200fa41cd98946",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/increased"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-10T13:05:42Z"
+    },
+    {
+        "id": "91f6f005-fda7-41e8-92f8-61d1f0483d77",
+        "actor": {
+            "name": "5731c08fdb69cf4200fa41cd98946",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/TurkeyCapital",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Istanbul"
+        },
+        "timestamp": "2016-05-10T13:05:41Z"
+    },
+    {
+        "id": "713d381d-4118-49c6-8353-0d216970114f",
+        "actor": {
+            "name": "5731c08fdb69cf4200fa41cd98946",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/adb/verbs/selected"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/alternatives/MadagascarIsCapitalOf",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "response": "Madagascar"
+        },
+        "timestamp": "2016-05-10T13:05:42Z"
+    },
+    {
+        "id": "1d74f6b2-3cd7-406d-8077-6982f648d801",
+        "actor": {
+            "name": "5731c08fdb69cf4200fa41cd98946",
+            "account": {
+                "homePage": "http://a2:3000/",
+                "name": "Anonymous"
+            }
+        },
+        "verb": {
+            "id": "https://w3id.org/xapi/seriousgames/verbs/set"
+        },
+        "object": {
+            "id": "http://a2:3000/api/proxy/gleaner/games/571f26b6ee07f74200512728/571f26b6ee07f74200512729/vars/score",
+            "definition": {}
+        },
+        "result": {
+            "success": false,
+            "completion": false,
+            "extensions": {
+                "https://w3id.org/xapi/seriousgames/extensions/value": "1"
+            }
+        },
+        "timestamp": "2016-05-10T13:05:42Z"
+    }
+]
