@@ -1,0 +1,11 @@
+{
+  "name": "rage-analytics-test",
+  "description": "RAGE Analytics Test Script",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "node ./test-rage.js"
+  },
+  "dependencies": {
+    "request": "*"
+  }
+}
