@@ -3,9 +3,12 @@
   "description": "RAGE Analytics Test Script",
   "version": "0.0.1",
   "scripts": {
-    "test": "node ./test-rage.js"
+    "webdriver": "webdriver-manager update && webdriver-manager start", 
+    "protractortest": "protractor ./protractortest/conf.js",
+    "collectortest": "node ./collectortest/test-rage.js"
   },
   "dependencies": {
-    "request": "*"
+    "request": "*",
+    "webdriver-manager": "*"
   }
 }
