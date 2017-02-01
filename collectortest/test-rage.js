@@ -42,6 +42,9 @@ var getStatementsFromDir = function (dir) {
         encoding: 'utf-8'
     };
 
+	if(log) {
+		var totalStatements = 0;
+	}
     var dirFiles = [];
     filesystem.readdirSync(path.join(__dirname, dir)).forEach(function (file) {
 
@@ -57,12 +60,15 @@ var getStatementsFromDir = function (dir) {
         data.forEach(function (trace) {
             statements.push(trace);
         });
+		if(log) {
+			totalStatements += statements.length;
+		}
         dirFiles.push(statements);
     });
 
 
     if (log) {
-        console.log('Files count', dirFiles.length);
+        console.log('Files count', dirFiles.length, 'Total statements', totalStatements);
     }
     return dirFiles;
 };
@@ -81,7 +87,7 @@ var sendStatementsToCollector = function (trackingCode, statements, callback) {
                 if (log) {
                     console.error(err);
                     console.error(httpResponse.statusCode);
-                    console.log('Did not start the collection process! Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                    console.log('Did not start the collection process! Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
                 }
                 return callback(err);
             }
@@ -97,13 +103,13 @@ var sendStatementsToCollector = function (trackingCode, statements, callback) {
             }, function (err, httpResponse, body) {
                 if (err || httpResponse.statusCode !== 200) {
                     if (log) {
-                        console.log('Did not track the statements! Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                        console.log('Did not track the statements! Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
                     }
                     return callback(err);
                 }
 
                 if (log) {
-                    console.log('Statements sent successfully.');
+                    console.log(statements.length, 'Statements sent successfully.');
                 }
                 callback(null, body);
             });
@@ -125,7 +131,7 @@ var signUp = function (name, password, role, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t signup', name, 'Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t signup', name, 'Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
             }
             return callback(err);
         }
@@ -150,7 +156,7 @@ var logIn = function (name, password, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Did register', name, 'Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Did register', name, 'Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
             }
             return callback(err);
         }
@@ -167,34 +173,57 @@ var createNewGame = function (authToken, callback) {
         uri: host + 'api/proxy/gleaner/games',
         method: 'POST',
         body: {
-            title: 'Test Game',
-            public: true
+            title: 'Test Game'
         },
         headers: {
             Authorization: authToken
         },
         json: true
     }, function (err, httpResponse, body) {
-        if (err || httpResponse.statusCode !== 200) {
-            if (log) {
-                console.log('Didn\'t create a new game Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
-            }
-            return callback(err);
-        }
+		if (err || httpResponse.statusCode !== 200) {
+			if (log) {
+				console.log('Didn\'t create a new game Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
+			}
+			return callback(err);
+		}
 
-        if (log) {
-            console.log('Test game created successfully');
-        }
-        callback(null, body);
+		if (log) {
+			console.log('Test game created successfully');
+		}
+
+		request({
+			uri: host + 'api/proxy/gleaner/games/' + body._id,
+			method: 'PUT',
+			body: {
+				public: true
+			},
+			headers: {
+				Authorization: authToken
+			},
+			json: true
+		}, function (err, httpResponse, body) {
+			if (err || httpResponse.statusCode !== 200) {
+				if (log) {
+				    console.log('Didn\'t configure the new game as public Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
+				}
+				return callback(err);
+			}
+
+			if (log) {
+				console.log('Test game configured as public successfully');
+			}
+			callback(null, body);
+
+		});
     });
 };
 
 var createNewSessionGame = function (authToken, gameId, versionId, callback) {
     request({
-        uri: host + 'api/proxy/gleaner/games/' + gameId + '/versions/' + versionId + '/sessions',
+        uri: host + 'api/proxy/gleaner/games/' + gameId + '/versions/' + versionId + '/classes',
         method: 'POST',
         body: {
-            name: 'Test Session'
+            name: 'Test Class'
         },
         headers: {
             Authorization: authToken
@@ -203,40 +232,61 @@ var createNewSessionGame = function (authToken, gameId, versionId, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t create a new session Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t create a new class Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
             }
             return callback(err);
         }
 
         if (log) {
-            console.log('Test session created successfully');
+            console.log('Test class created successfully');
         }
+		 request({
+				uri: host + 'api/proxy/gleaner/games/' + gameId + '/versions/' + versionId + '/classes/' + body._id + '/sessions',
+				method: 'POST',
+				body: {
+				    name: 'Test Session'
+				},
+				headers: {
+				    Authorization: authToken
+				},
+				json: true
+			}, function (err, httpResponse, body) {
+				if (err || httpResponse.statusCode !== 200) {
+				    if (log) {
+				        console.log('Didn\'t create a new class Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
+				    }
+				    return callback(err);
+				}
 
-        sessionId = body._id;
-        request({
-            uri: host + 'api/proxy/gleaner/sessions/' + sessionId,
-            method: 'PUT',
-            body: {
-                allowAnonymous: true
-            },
-            headers: {
-                Authorization: authToken
-            },
-            json: true
-        }, function (err, httpResponse, body) {
-            if (err || httpResponse.statusCode !== 200) {
-                if (log) {
-                    console.log('Didn\'t allow anonymous users Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
-                }
-                return callback(err);
-            }
+				if (log) {
+				    console.log('Test session created successfully');
+				}
+				sessionId = body._id;
+				request({
+				    uri: host + 'api/proxy/gleaner/sessions/' + sessionId,
+				    method: 'PUT',
+				    body: {
+				        allowAnonymous: true
+				    },
+				    headers: {
+				        Authorization: authToken
+				    },
+				    json: true
+				}, function (err, httpResponse, body) {
+				    if (err || httpResponse.statusCode !== 200) {
+				        if (log) {
+				            console.log('Didn\'t allow anonymous users Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
+				        }
+				        return callback(err);
+				    }
 
-            if (log) {
-                console.log('Anonymous users allowed successfully');
-            }
-            callback(null, body);
-        });
-    });
+				    if (log) {
+				        console.log('Anonymous users allowed successfully');
+				    }
+				    callback(null, body);
+				});
+			});
+		});
 };
 
 var startSession = function (authToken, sessionId, callback) {
@@ -253,7 +303,7 @@ var startSession = function (authToken, sessionId, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t start the session Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t start the session Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
             }
             return callback(err);
         }
@@ -276,7 +326,7 @@ var createNewGameVersion = function (authToken, gameId, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t create a new version for the game', gameId, 'Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t create a new version for the game', gameId, 'Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
             }
             return callback(err);
         }
@@ -309,7 +359,7 @@ var setupDeveloperOperations = function (callback) {
             }
 
             if (log) {
-                console.log('LogIn correct', body);
+                console.log('LogIn correct', body.username);
             }
 
             var authToken = 'Bearer ' + body.user.token;
@@ -359,7 +409,7 @@ var setupTeacherOperations = function (callback) {
             }
 
             if (log) {
-                console.log('LogIn correct', body);
+                console.log('LogIn correct', body.username);
             }
 
             var authToken = 'Bearer ' + body.user.token;
