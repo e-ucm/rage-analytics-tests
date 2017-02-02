@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "request": "*",
-    "webdriver-manager": "*"
+    "webdriver-manager": "*",
+    "yargs": "*"
   }
 }
