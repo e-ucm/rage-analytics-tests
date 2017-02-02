@@ -2,25 +2,96 @@
 'use strict';
 
 var request = require('request');
+var argv = require('yargs')
+    .option('host', {
+        alias: 't',
+        describe: 'Where to connect to the base server (A2)',
+        default: 'http://localhost:3000/'
+    })
+    .option('statementsDir', {
+        alias: 's',
+        describe: 'The directory where to read the statements from, relative to this file path',
+        default: 'statements'
+    })
+    .option('log', {
+        alias: 'l',
+        describe: 'Activate the log output',
+        default: false
+    })
+    .option('rounds', {
+        alias: 'r',
+        describe: 'The amount of times to send all the traces',
+        default: 1
+    })
+    .option('devUsername', {
+        alias: 'du',
+        describe: 'Developer username (that will be used to configure the game)',
+        default: 'tempdev1'
+    })
+    .option('devPassword', {
+        alias: 'dp',
+        describe: 'Developer password (that will be used to configure the game)',
+        default: 'dev'
+    })
+    .option('devRole', {
+        alias: 'dr',
+        describe: 'Developer role (that will be used to configure the game)',
+        default: 'developer'
+    })
+    .option('teacherUsername', {
+        alias: 'tu',
+        describe: 'Teacher username (that will be used to configure the game)',
+        default: 'tempteacher2'
+    })
+    .option('teacherPassword', {
+        alias: 'tp',
+        describe: 'Teacher password (that will be used to configure the game)',
+        default: 'tea'
+    })
+    .option('teacherRole', {
+        alias: 'tr',
+        describe: 'Teacher role (that will be used to configure the game)',
+        default: 'teacher'
+    })
+    .fail(function (msg, err, yargs) {
+        if (err) throw err; // preserve stack
+        console.error('The tests failed!');
+        console.error(msg);
+        console.error('Error', err);
+        console.error('You should be doing', yargs.help());
+        process.exit(1);
+    })
+    .help('h')
+    .alias('h', 'help')
+    .epilog('e-UCM Research Group - for more information find our manual at https://github.com/e-ucm/rage-analytics/wiki')
+    .argv;
 
-var host = process.env.HOST || 'http://localhost:3000/';
-var statementsDir = 'statements';
-var log = process.env.LOG || true;
+var host = argv.host || args.t || 'http://localhost:3000/';
+if (!host.endsWith("/")) {
+    host = host + "/";
+}
+var statementsDir = argv.statementsDir || argv.s || 'statements';
+var log = argv.log || argv.l || false;
+var rounds = argv.rounds || argv.r || 1;
+if (rounds < 1) {
+    rounds = 1;
+}
 
 var dev = {
-    username: 'tempdev1',
-    password: 'dev',
-    role: 'developer'
+    username: argv.devUsername || argv.du || 'tempdev2',
+    password: argv.devPassword || argv.dp || 'dev',
+    role: argv.devRole || argv.dr || 'developer'
 };
 
 var teacher = {
-    username: 'tempteacher1',
-    password: 't',
-    role: 'teacher'
+    username: argv.teacherUsername || argv.tu || 'tempteacher2',
+    password: argv.teacherPassword || argv.tp || 'tea',
+    role: argv.teacherRole || argv.tr || 'teacher'
 };
 
 var gameId;
 var versionId;
+var classId;
 var sessionId;
 var trackingCode;
 
@@ -42,6 +113,9 @@ var getStatementsFromDir = function (dir) {
         encoding: 'utf-8'
     };
 
+    if (log) {
+        var totalStatements = 0;
+    }
     var dirFiles = [];
     filesystem.readdirSync(path.join(__dirname, dir)).forEach(function (file) {
 
@@ -57,12 +131,15 @@ var getStatementsFromDir = function (dir) {
         data.forEach(function (trace) {
             statements.push(trace);
         });
+        if (log) {
+            totalStatements += statements.length;
+        }
         dirFiles.push(statements);
     });
 
 
     if (log) {
-        console.log('Files count', dirFiles.length);
+        console.log('Files count', dirFiles.length, 'Total statements', totalStatements);
     }
     return dirFiles;
 };
@@ -81,7 +158,7 @@ var sendStatementsToCollector = function (trackingCode, statements, callback) {
                 if (log) {
                     console.error(err);
                     console.error(httpResponse.statusCode);
-                    console.log('Did not start the collection process! Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                    console.log('Did not start the collection process! Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
                 }
                 return callback(err);
             }
@@ -97,13 +174,13 @@ var sendStatementsToCollector = function (trackingCode, statements, callback) {
             }, function (err, httpResponse, body) {
                 if (err || httpResponse.statusCode !== 200) {
                     if (log) {
-                        console.log('Did not track the statements! Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                        console.log('Did not track the statements! Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
                     }
                     return callback(err);
                 }
 
                 if (log) {
-                    console.log('Statements sent successfully.');
+                    console.log(statements.length, 'Statements sent successfully.');
                 }
                 callback(null, body);
             });
@@ -125,7 +202,7 @@ var signUp = function (name, password, role, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t signup', name, 'Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t signup', name, 'Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
             }
             return callback(err);
         }
@@ -150,7 +227,7 @@ var logIn = function (name, password, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Did register', name, 'Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Did register', name, 'Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
             }
             return callback(err);
         }
@@ -167,8 +244,7 @@ var createNewGame = function (authToken, callback) {
         uri: host + 'api/proxy/gleaner/games',
         method: 'POST',
         body: {
-            title: 'Test Game',
-            public: true
+            title: 'Test Game'
         },
         headers: {
             Authorization: authToken
@@ -177,7 +253,7 @@ var createNewGame = function (authToken, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t create a new game Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t create a new game Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
             }
             return callback(err);
         }
@@ -185,39 +261,12 @@ var createNewGame = function (authToken, callback) {
         if (log) {
             console.log('Test game created successfully');
         }
-        callback(null, body);
-    });
-};
 
-var createNewSessionGame = function (authToken, gameId, versionId, callback) {
-    request({
-        uri: host + 'api/proxy/gleaner/games/' + gameId + '/versions/' + versionId + '/sessions',
-        method: 'POST',
-        body: {
-            name: 'Test Session'
-        },
-        headers: {
-            Authorization: authToken
-        },
-        json: true
-    }, function (err, httpResponse, body) {
-        if (err || httpResponse.statusCode !== 200) {
-            if (log) {
-                console.log('Didn\'t create a new session Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
-            }
-            return callback(err);
-        }
-
-        if (log) {
-            console.log('Test session created successfully');
-        }
-
-        sessionId = body._id;
         request({
-            uri: host + 'api/proxy/gleaner/sessions/' + sessionId,
+            uri: host + 'api/proxy/gleaner/games/' + body._id,
             method: 'PUT',
             body: {
-                allowAnonymous: true
+                public: true
             },
             headers: {
                 Authorization: authToken
@@ -226,15 +275,89 @@ var createNewSessionGame = function (authToken, gameId, versionId, callback) {
         }, function (err, httpResponse, body) {
             if (err || httpResponse.statusCode !== 200) {
                 if (log) {
-                    console.log('Didn\'t allow anonymous users Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                    console.log('Didn\'t configure the new game as public Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
                 }
                 return callback(err);
             }
 
             if (log) {
-                console.log('Anonymous users allowed successfully');
+                console.log('Test game configured as public successfully');
             }
             callback(null, body);
+
+        });
+    });
+};
+
+var createNewSessionGame = function (authToken, gameId, versionId, callback) {
+    request({
+        uri: host + 'api/proxy/gleaner/games/' + gameId + '/versions/' + versionId + '/classes',
+        method: 'POST',
+        body: {
+            name: 'Test Class'
+        },
+        headers: {
+            Authorization: authToken
+        },
+        json: true
+    }, function (err, httpResponse, body) {
+        if (err || httpResponse.statusCode !== 200) {
+            if (log) {
+                console.log('Didn\'t create a new class Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
+            }
+            return callback(err);
+        }
+
+        if (log) {
+            console.log('Test class created successfully');
+        }
+
+        classId = body._id;
+        request({
+            uri: host + 'api/proxy/gleaner/games/' + gameId + '/versions/' + versionId + '/classes/' + classId + '/sessions',
+            method: 'POST',
+            body: {
+                name: 'Test Session'
+            },
+            headers: {
+                Authorization: authToken
+            },
+            json: true
+        }, function (err, httpResponse, body) {
+            if (err || httpResponse.statusCode !== 200) {
+                if (log) {
+                    console.log('Didn\'t create a new class Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
+                }
+                return callback(err);
+            }
+
+            if (log) {
+                console.log('Test session created successfully');
+            }
+            sessionId = body._id;
+            request({
+                uri: host + 'api/proxy/gleaner/sessions/' + sessionId,
+                method: 'PUT',
+                body: {
+                    allowAnonymous: true
+                },
+                headers: {
+                    Authorization: authToken
+                },
+                json: true
+            }, function (err, httpResponse, body) {
+                if (err || httpResponse.statusCode !== 200) {
+                    if (log) {
+                        console.log('Didn\'t allow anonymous users Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
+                    }
+                    return callback(err);
+                }
+
+                if (log) {
+                    console.log('Anonymous users allowed successfully');
+                }
+                callback(null, body);
+            });
         });
     });
 };
@@ -253,7 +376,7 @@ var startSession = function (authToken, sessionId, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t start the session Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t start the session Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
             }
             return callback(err);
         }
@@ -276,7 +399,7 @@ var createNewGameVersion = function (authToken, gameId, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t create a new version for the game', gameId, 'Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t create a new version for the game', gameId, 'Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
             }
             return callback(err);
         }
@@ -309,7 +432,7 @@ var setupDeveloperOperations = function (callback) {
             }
 
             if (log) {
-                console.log('LogIn correct', body);
+                console.log('LogIn correct', body.username);
             }
 
             var authToken = 'Bearer ' + body.user.token;
@@ -333,7 +456,9 @@ var setupDeveloperOperations = function (callback) {
 
                     versionId = body._id;
                     trackingCode = body.trackingCode;
-                    console.log(body);
+                    if (log) {
+                        console.log('New game version creation successfully!');
+                    }
                     callback(null, body);
                 });
             });
@@ -359,7 +484,7 @@ var setupTeacherOperations = function (callback) {
             }
 
             if (log) {
-                console.log('LogIn correct', body);
+                console.log('LogIn correct', body.username);
             }
 
             var authToken = 'Bearer ' + body.user.token;
@@ -388,6 +513,26 @@ var setupTeacherOperations = function (callback) {
 };
 
 
+var sendFolderTraces = function (round, callback) {
+    var statementsFromDir = getStatementsFromDir(statementsDir);
+
+    statementsFromDir.forEach(function (statements) {
+        statements.forEach(function (statement) {
+            if(statement) {
+                if(statement.actor) {
+                    statement.actor.name = 'round-' + round + '-' + statement.actor.name;
+                }
+            }
+        });
+        sendStatementsToCollector(trackingCode, statements, function (err, res) {
+            if (err) {
+                callback(err);
+            }
+        })
+    });
+    callback(null);
+};
+
 setupDeveloperOperations(function (err, body) {
     if (err) {
         if (log) {
@@ -412,21 +557,24 @@ setupDeveloperOperations(function (err, body) {
             console.log('Success performing the teacher operations', err);
         }
 
-        var statementsFromDir = getStatementsFromDir(statementsDir);
+        var round;
+        for (var i = 0; i < rounds; ++i) {
+            round = i + 1;
+            if (log) {
+                console.log('Success sending all the folder traces, round', round);
+            }
+            sendFolderTraces(round, function (err) {
+                if (err) {
+                    if (log) {
+                        console.log('Failed to send traces from folder', err);
+                    }
+                    return process.exit(1);
+                }
 
-        statementsFromDir.forEach(function (statements) {
-           sendStatementsToCollector(trackingCode, statements, function(err, res) {
-               if (err) {
-                   if (log) {
-                       console.log('Failed to setup the teacher operations', err);
-                   }
-               }
-               else {
-                   if (log) {
-                       console.log('Statements sent, result', res);
-                   }
-               }
-           })
-        });
+                if (log) {
+                    console.log('Success sending all traces to the collector', err);
+                }
+            });
+        }
     });
 });
