@@ -7,6 +7,8 @@ var host = process.env.HOST || 'http://localhost:3000/';
 var statementsDir = 'statements';
 var log = process.env.LOG || true;
 
+var thomasKilmannClassifications = ["avoiding", "competing", "accomodating", "compromising", "collaborating"];
+
 var dev = {
     username: 'tempdev1',
     password: 'dev',
@@ -22,7 +24,8 @@ var teacher = {
 var gameId;
 var versionId;
 var sessionId;
-var trackingCode;
+var trackingCode = process.env.TRACKING_CODE || '';
+var addThomasKilmannData = process.env.ADD_THOMAS_KILMANN_DATA || '';
 
 /**
  *
@@ -67,23 +70,64 @@ var getStatementsFromDir = function (dir) {
     return dirFiles;
 };
 
+function buildThomasKilmannClassification() {
+    return thomasKilmannClassifications[Math.floor(Math.random() * thomasKilmannClassifications.length)];
+}
+
+function buildListofBiases() {
+    return {
+        "gender": Math.random() < 0.5 ? true : false,
+        "race": Math.random() < 0.5 ? true : false,
+        "ability": Math.random() < 0.5 ? true : false,
+        "occupation": Math.random() < 0.5 ? true : false,
+        "fashion": Math.random() < 0.5 ? true : false,
+        "otherSocial": Math.random() < 0.5 ? true : false
+    }
+}
 
 var sendStatementsToCollector = function (trackingCode, statements, callback) {
 
     request.post(host + 'api/proxy/gleaner/collector/start/' + trackingCode, {
-            json: true,
-            headers: {
-                Authorization: 'a:'
-            }
+            json: true
         },
         function (err, httpResponse, body) {
             if (err || httpResponse.statusCode !== 200) {
                 if (log) {
                     console.error(err);
                     console.error(httpResponse.statusCode);
-                    console.log('Did not start the collection process! Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                    console.log('Did not start the collection process! Err:', err, 'Status code:', httpResponse.statusCode, 'Body', JSON.stringify(body, null, '    '));
                 }
                 return callback(err);
+            }
+
+            for (var i = 0; i < statements.length; ++i) {
+                var statement = statements[i];
+                statement.actor = body.actor;
+
+                if (!statement.object) {
+                    statement.object = {};
+                }
+                if (!statement.object.definition) {
+                    statement.object.definition = {};
+                }
+
+                if (!statement.object.definition.type) {
+                    statement.object.definition.type = '.../test_type';
+                }
+
+                if (addThomasKilmannData) {
+                    if (!statement.result) {
+                        statement.result = {};
+                    }
+
+                    if (!statement.result.extensions) {
+                        statement.result.extensions = {};
+                    }
+
+
+                    statement.result.extensions["https://rage.e-ucm.es/xapi/ext/thomasKilmann"] = buildThomasKilmannClassification();
+                    statement.result.extensions["https://rage.e-ucm.es/xapi/ext/biases"] = buildListofBiases();
+                }
             }
 
             request({
@@ -387,46 +431,65 @@ var setupTeacherOperations = function (callback) {
     });
 };
 
+if (!trackingCode) {
 
-setupDeveloperOperations(function (err, body) {
-    if (err) {
-        if (log) {
-            console.log('Failed to setup the developer operations', err);
-        }
-        return process.exit(1);
-    }
-
-    if (log) {
-        console.log('Success performing the developer operations', err);
-    }
-
-    setupTeacherOperations(function (err, body) {
+    setupDeveloperOperations(function (err, body) {
         if (err) {
             if (log) {
-                console.log('Failed to setup the teacher operations', err);
+                console.log('Failed to setup the developer operations', err);
             }
             return process.exit(1);
         }
 
         if (log) {
-            console.log('Success performing the teacher operations', err);
+            console.log('Success performing the developer operations', err);
         }
 
-        var statementsFromDir = getStatementsFromDir(statementsDir);
+        setupTeacherOperations(function (err, body) {
+            if (err) {
+                if (log) {
+                    console.log('Failed to setup the teacher operations', err);
+                }
+                return process.exit(1);
+            }
 
-        statementsFromDir.forEach(function (statements) {
-           sendStatementsToCollector(trackingCode, statements, function(err, res) {
-               if (err) {
-                   if (log) {
-                       console.log('Failed to setup the teacher operations', err);
-                   }
-               }
-               else {
-                   if (log) {
-                       console.log('Statements sent, result', res);
-                   }
-               }
-           })
+            if (log) {
+                console.log('Success performing the teacher operations', err);
+            }
+
+            var statementsFromDir = getStatementsFromDir(statementsDir);
+
+            statementsFromDir.forEach(function (statements) {
+                sendStatementsToCollector(trackingCode, statements, function (err, res) {
+                    if (err) {
+                        if (log) {
+                            console.log('Failed to setup the teacher operations', err);
+                        }
+                    }
+                    else {
+                        if (log) {
+                            console.log('Statements sent, result', res);
+                        }
+                    }
+                })
+            });
         });
     });
-});
+} else {
+    var statementsFromDir = getStatementsFromDir(statementsDir);
+
+    statementsFromDir.forEach(function (statements) {
+        sendStatementsToCollector(trackingCode, statements, function (err, res) {
+            if (err) {
+                if (log) {
+                    console.log('Failed to setup the teacher operations', err);
+                }
+            }
+            else {
+                if (log) {
+                    console.log('Statements sent, result', res);
+                }
+            }
+        })
+    });
+}

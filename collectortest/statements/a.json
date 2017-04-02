@@ -1,0 +1,31 @@
+[
+  {
+    "actor": {
+      "account": {
+        "homePage": "http://a2:3000/",
+        "name": "Anonymous"
+      },
+      "name": "scorpionic-luminiferous-mara"
+    },
+    "verb": {
+      "id": "https://w3id.org/xapi/adb/verbs/selected"
+    },
+    "object": {
+      "id": "http://a2:3000/api/proxy/gleaner/games/58c01b4ecc1da9006de2c9bf/58c01b4ecc1da9006de2c9c0/AlternativeID",
+      "definition": {
+        "type": "http://adlnet.gov/expapi/activities/question"
+      }
+    },
+    "result": {
+      "response": "option",
+      "extensions": {
+        "https://rage.e-ucm.es/xapi/ext/thomasKilmann": "competing",
+        "https://rage.e-ucm.es/xapi/ext/biases": {
+          "occupation": false,
+          "fashion": false
+        }
+      }
+    },
+    "timestamp": "2017-03-30T11:32:34.307Z"
+  }
+]
