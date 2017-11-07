@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 var request = require('request');
 var argv = require('yargs')
     .option('host', {
@@ -66,12 +67,12 @@ var argv = require('yargs')
     .epilog('e-UCM Research Group - for more information find our manual at https://github.com/e-ucm/rage-analytics/wiki')
     .argv;
 
-var host = argv.host || args.t || 'http://localhost:3000/';
+var host = process.env.HOST || argv.host || args.t ||  'http://localhost:3000/';
 if (!host.endsWith("/")) {
     host = host + "/";
 }
 var statementsDir = argv.statementsDir || argv.s || 'statements';
-var log = argv.log || argv.l || false;
+var log = argv.log || argv.l || process.env.LOG || false;
 var rounds = argv.rounds || argv.r || 1;
 if (rounds < 1) {
     rounds = 1;
@@ -129,6 +130,16 @@ var getStatementsFromDir = function (dir) {
 
         var statements = [];
         data.forEach(function (trace) {
+            if (!trace.object) {
+                trace.object = {};
+            }
+            if (!trace.object.definition) {
+                trace.object.definition = {};
+            }
+
+            if (!trace.object.definition.type) {
+                trace.object.definition.type = '.../test_type';
+            }
             statements.push(trace);
         });
         if (log) {
@@ -145,13 +156,10 @@ var getStatementsFromDir = function (dir) {
 };
 
 
-var sendStatementsToCollector = function (trackingCode, statements, callback) {
+var sendStatementsToCollector = function (trackingCode, statements, round, callback) {
 
     request.post(host + 'api/proxy/gleaner/collector/start/' + trackingCode, {
-            json: true,
-            headers: {
-                Authorization: 'a:'
-            }
+            json: true
         },
         function (err, httpResponse, body) {
             if (err || httpResponse.statusCode !== 200) {
@@ -161,6 +169,11 @@ var sendStatementsToCollector = function (trackingCode, statements, callback) {
                     console.log('Did not start the collection process! Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
                 }
                 return callback(err);
+            }
+
+            for (var i = 0; i < statements.length; ++i) {
+                var statement = statements[i];
+                statement.actor = body.actor;
             }
 
             request({
@@ -518,13 +531,13 @@ var sendFolderTraces = function (round, callback) {
 
     statementsFromDir.forEach(function (statements) {
         statements.forEach(function (statement) {
-            if(statement) {
-                if(statement.actor) {
+            if (statement) {
+                if (statement.actor) {
                     statement.actor.name = 'round-' + round + '-' + statement.actor.name;
                 }
             }
         });
-        sendStatementsToCollector(trackingCode, statements, function (err, res) {
+        sendStatementsToCollector(trackingCode, statements, round, function (err, res) {
             if (err) {
                 callback(err);
             }
@@ -533,48 +546,74 @@ var sendFolderTraces = function (round, callback) {
     callback(null);
 };
 
-setupDeveloperOperations(function (err, body) {
-    if (err) {
+
+if (process.env.TRACKING_CODE) {
+    trackingCode = process.env.TRACKING_CODE;
+
+    var round;
+    for (var i = 0; i < rounds; ++i) {
+        round = i + 1;
         if (log) {
-            console.log('Failed to setup the developer operations', err);
+            console.log('Success sending all the folder traces, round', round);
         }
-        return process.exit(1);
-    }
+        sendFolderTraces(round, function (err) {
+            if (err) {
+                if (log) {
+                    console.log('Failed to send traces from folder', err);
+                }
+                return process.exit(1);
+            }
 
-    if (log) {
-        console.log('Success performing the developer operations', err);
+            if (log) {
+                console.log('Success sending all traces to the collector', err);
+            }
+        });
     }
+} else {
 
-    setupTeacherOperations(function (err, body) {
+    setupDeveloperOperations(function (err, body) {
         if (err) {
             if (log) {
-                console.log('Failed to setup the teacher operations', err);
+                console.log('Failed to setup the developer operations', err);
             }
             return process.exit(1);
         }
 
         if (log) {
-            console.log('Success performing the teacher operations', err);
+            console.log('Success performing the developer operations', err);
         }
 
-        var round;
-        for (var i = 0; i < rounds; ++i) {
-            round = i + 1;
-            if (log) {
-                console.log('Success sending all the folder traces, round', round);
-            }
-            sendFolderTraces(round, function (err) {
-                if (err) {
-                    if (log) {
-                        console.log('Failed to send traces from folder', err);
-                    }
-                    return process.exit(1);
-                }
-
+        setupTeacherOperations(function (err, body) {
+            if (err) {
                 if (log) {
-                    console.log('Success sending all traces to the collector', err);
+                    console.log('Failed to setup the teacher operations', err);
                 }
-            });
-        }
+                return process.exit(1);
+            }
+
+            if (log) {
+                console.log('Success performing the teacher operations', err);
+            }
+
+            var round;
+            for (var i = 0; i < rounds; ++i) {
+                round = i + 1;
+                if (log) {
+                    console.log('Success sending all the folder traces, round', round);
+                }
+                sendFolderTraces(round, function (err) {
+                    if (err) {
+                        if (log) {
+                            console.log('Failed to send traces from folder', err);
+                        }
+                        return process.exit(1);
+                    }
+
+                    if (log) {
+                        console.log('Success sending all traces to the collector', err);
+                    }
+                });
+            }
+        });
     });
-});
+}
