@@ -3,6 +3,7 @@
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 var request = require('request');
+var async = require('async');
 var argv = require('yargs')
     .option('host', {
         alias: 't',
@@ -95,7 +96,7 @@ var versionId;
 var classId;
 var sessionId;
 var trackingCode;
-
+var usrTokens = {};
 /**
  *
  * @param dir the directory where the xAPI Statements are located. E.g. '/statements'.
@@ -157,47 +158,71 @@ var getStatementsFromDir = function (dir) {
 
 
 var sendStatementsToCollector = function (trackingCode, statements, round, callback) {
-
-    request.post(host + 'api/proxy/gleaner/collector/start/' + trackingCode, {
-            json: true
-        },
-        function (err, httpResponse, body) {
+    if(usrTokens[statements[0].actor.name]){
+        request({
+            uri: host + 'api/proxy/gleaner/collector/track',
+            method: 'POST',
+            body: statements,
+            json: true,
+            headers: {
+                Authorization: usrTokens[statements[0].actor.name]
+            }
+        }, function (err, httpResponse, body) {
             if (err || httpResponse.statusCode !== 200) {
                 if (log) {
-                    console.error(err);
-                    console.error(httpResponse.statusCode);
-                    console.log('Did not start the collection process! Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
+                    console.log('Did not track the statements! Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
                 }
                 return callback(err);
             }
 
-            for (var i = 0; i < statements.length; ++i) {
-                var statement = statements[i];
-                statement.actor = body.actor;
+            if (log) {
+                console.log(statements.length, 'Statements sent successfully.');
             }
-
-            request({
-                uri: host + 'api/proxy/gleaner/collector/track',
-                method: 'POST',
-                body: statements,
-                json: true,
-                headers: {
-                    Authorization: body.authToken
-                }
-            }, function (err, httpResponse, body) {
+            callback(null, body);
+        });
+    } else {
+        request.post(host + 'api/proxy/gleaner/collector/start/' + trackingCode, {
+                json: true
+            },
+            function (err, httpResponse, body) {
                 if (err || httpResponse.statusCode !== 200) {
                     if (log) {
-                        console.log('Did not track the statements! Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
+                        console.error(err);
+                        console.error(httpResponse.statusCode);
+                        console.log('Did not start the collection process! Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
                     }
                     return callback(err);
                 }
-
-                if (log) {
-                    console.log(statements.length, 'Statements sent successfully.');
+                /*
+                for (var i = 0; i < statements.length; ++i) {
+                    var statement = statements[i];
+                    statement.actor = body.actor;
                 }
-                callback(null, body);
+                */
+                usrTokens[statements[0].actor.name] = body.authToken;
+                request({
+                    uri: host + 'api/proxy/gleaner/collector/track',
+                    method: 'POST',
+                    body: statements,
+                    json: true,
+                    headers: {
+                        Authorization: body.authToken
+                    }
+                }, function (err, httpResponse, body) {
+                    if (err || httpResponse.statusCode !== 200) {
+                        if (log) {
+                            console.log('Did not track the statements! Err:', err, 'Status code:', httpResponse ? httpResponse.statusCode : httpResponse, 'Body', body);
+                        }
+                        return callback(err);
+                    }
+
+                    if (log) {
+                        console.log(statements.length, 'Statements sent successfully.');
+                    }
+                    callback(null, body);
+                });
             });
-        });
+    }
 };
 
 var signUp = function (name, password, role, callback) {
@@ -530,18 +555,29 @@ var sendFolderTraces = function (round, callback) {
     var statementsFromDir = getStatementsFromDir(statementsDir);
 
     statementsFromDir.forEach(function (statements) {
-        statements.forEach(function (statement) {
+        async.eachSeries(statements, function (statement, inDone) {
             if (statement) {
                 if (statement.actor) {
                     statement.actor.name = 'round-' + round + '-' + statement.actor.name;
                 }
-            }
+                sendStatementsToCollector(trackingCode, [statement], round, function (err, res) {
+                    if (err) {
+                        callback(err);
+                    }
+                })}
+                setTimeout(function(){
+                    console.log("send trace")
+                    inDone();
+                }
+                , 750);
         });
+        /*
         sendStatementsToCollector(trackingCode, statements, round, function (err, res) {
             if (err) {
                 callback(err);
             }
         })
+        */
     });
     callback(null);
 };
