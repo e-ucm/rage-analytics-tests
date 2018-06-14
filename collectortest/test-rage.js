@@ -11,6 +11,7 @@ var log = process.env.LOG || true;
 var trackingCode = process.env.TRACKING_CODE || '';
 var method = 'random';
 var batchSize = 10;
+var fromscript = -1;
 
 var TrackerAsset = require('xapi-tracker');
 var tracker = new TrackerAsset();
@@ -45,6 +46,8 @@ process.argv.forEach(function (val, index, array) {
     method = obtainParameter('method', val) ? obtainParameter('method', val) : method;
     frequency = obtainParameter('frequency', val) ? parseInt(obtainParameter('frequency', val)) : frequency;
     batchSize = obtainParameter('batch_size', val) ? parseInt(obtainParameter('batch_size', val)) : batchSize;
+    statementsDir = obtainParameter('path', val) ? obtainParameter('path', val) : statementsDir;
+    fromscript = obtainParameter('fromscript', val) ? obtainParameter('fromscript', val) : fromscript;
 });
 
 console.log('Sending traces to host: ' + host);
@@ -53,7 +56,12 @@ console.log('With method: ' + method);
 if(trackingCode != ''){
     console.log('To the Tracking Code: ' + trackingCode);
 }
-
+if(method == 'stored'){
+    console.log('From path: ' + statementsDir);
+}
+if(fromscript && statementsDir !== 'statements'){
+    statementsDir = '/../' + statementsDir; 
+}
 // #################################################
 
 function getRandomInt(min, max) {
@@ -119,22 +127,34 @@ var getStatementsFromDir = function (dir) {
     };
 
     var dirFiles = [];
-    filesystem.readdirSync(path.join(__dirname, dir)).forEach(function (file) {
+    var files = [];
 
-        file = path.join(dir, file);
+    var currentdir = path.join(__dirname, dir);
+    console.log();
+    if(filesystem.lstatSync(currentdir).isDirectory()){
+        files = filesystem.readdirSync(currentdir);
+        for(var i = 0; i < files.length; i++){
+            files[i] = path.join(currentdir, files[i]);
+        }
+    }else{
+        files.push(currentdir);
+    }
+
+    for(var i = 0; i < files.length; i++){
+        var file = files[i];
 
         if (log) {
             console.log("Reading: " + file);
         }
 
-        var data = JSON.parse(filesystem.readFileSync(path.join(__dirname, file), options));
+        var data = JSON.parse(filesystem.readFileSync(file, options));
 
         var statements = [];
         data.forEach(function (trace) {
             statements.push(trace);
         });
         dirFiles.push(statements);
-    });
+    }
 
 
     if (log) {

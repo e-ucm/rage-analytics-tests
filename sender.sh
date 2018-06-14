@@ -9,6 +9,7 @@ usage () {
 	echo "      -f   Sets the trace frequency (e.g. 10 equals 10 t/s), "
 	echo "      -t   Sets the tracking code (optional), "
 	echo "      -m   Sets the statement generator method (random|stored)"
+	echo "      -p   Path to the file to load (only needed if method is stored)"
 	echo "      -b   Sets the tracker batch size (max sent traces per flush)"
 	echo "      -s   Collector server name with port"
 	echo ""
@@ -18,8 +19,9 @@ HOST=""
 FREQUENCY="1"
 TRACKINGCODE=""
 METHOD=""
+PATHFILE=""
 BATCHSIZE="10"
-while getopts ":hf:b:t:m:s:" option; do 
+while getopts ":hf:b:t:m:p:s:" option; do 
 	case $option in 
 		f)
 			FREQUENCY=$OPTARG ;;
@@ -29,6 +31,8 @@ while getopts ":hf:b:t:m:s:" option; do
 			BATCHSIZE=$OPTARG ;;
 		t)
 			TRACKINGCODE=$OPTARG ;;
+		p)
+			PATHFILE=$OPTARG ;;
 		s)
 			HOST=$OPTARG ;;
 		:) 
@@ -47,7 +51,7 @@ while getopts ":hf:b:t:m:s:" option; do
 done
 
 
-PARAMETERS="--frequency=$FREQUENCY"
+PARAMETERS="--fromscript=1 --frequency=$FREQUENCY"
 if [ "$HOST" != "" ]; then
 	PARAMETERS="$PARAMETERS --host=$HOST"
 fi
@@ -59,6 +63,9 @@ if [ "$METHOD" != "" ]; then
 fi
 if [ "$BATCHSIZE" != "10" ]; then
 	PARAMETERS="$PARAMETERS --batch_size=$BATCHSIZE"
+fi
+if [ "$PATHFILE" != "" ]; then
+	PARAMETERS="$PARAMETERS --path=$PATHFILE"
 fi
 
 node "./collectortest/test-rage.js" $PARAMETERS
