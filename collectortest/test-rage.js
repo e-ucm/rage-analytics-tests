@@ -2,10 +2,91 @@
 'use strict';
 
 var request = require('request');
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
+var frequency = 1;
 var host = process.env.HOST || 'http://localhost:3000/';
 var statementsDir = 'statements';
 var log = process.env.LOG || true;
+var trackingCode = process.env.TRACKING_CODE || '';
+var method = 'random';
+var batchSize = 10;
+var fromscript = -1;
+
+var TrackerAsset = require('xapi-tracker');
+var tracker = new TrackerAsset();
+
+// ############### OBTAIN PARAMETERS ###############
+
+var op_lastname = '';
+var op_lastval = '';
+var op_lastresult = '';
+var obtainParameter = function(name, val){
+    if(name === op_lastname && val === op_lastval){
+        return op_lastresult;
+    }
+
+    var result = false;
+    op_lastname = name;
+    op_lastval = val;
+    var fullname = '--' + name + '=';
+    var v = val.indexOf(fullname);
+
+    if(v>-1){
+        result = val.substr(fullname.length);
+    }
+
+    op_lastresult = result;
+    return result;
+};
+
+process.argv.forEach(function (val, index, array) {
+    host = obtainParameter('host', val) ? obtainParameter('host', val) : host;
+    trackingCode = obtainParameter('tracking_code', val) ? obtainParameter('tracking_code', val) : trackingCode;
+    method = obtainParameter('method', val) ? obtainParameter('method', val) : method;
+    frequency = obtainParameter('frequency', val) ? parseInt(obtainParameter('frequency', val)) : frequency;
+    batchSize = obtainParameter('batch_size', val) ? parseInt(obtainParameter('batch_size', val)) : batchSize;
+    statementsDir = obtainParameter('path', val) ? obtainParameter('path', val) : statementsDir;
+    fromscript = obtainParameter('fromscript', val) ? obtainParameter('fromscript', val) : fromscript;
+});
+
+console.log('Sending traces to host: ' + host);
+console.log('With frequency: ' + frequency + ' t/s');
+console.log('With method: ' + method);
+if(trackingCode != ''){
+    console.log('To the Tracking Code: ' + trackingCode);
+}
+if(method == 'stored'){
+    console.log('From path: ' + statementsDir);
+}
+if(fromscript && statementsDir !== 'statements'){
+    statementsDir = '/../' + statementsDir; 
+}
+// #################################################
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomString() {
+    return Math.random().toString(36).substring(7);
+}
+
+function getRandomPhrase(){
+    var subjects=['Ivan', 'Balta', 'Manu', 'Cristian', 'Cristi', 'Victorma', 'Toni', 'ESDLM'];
+    var verbs=['will search for','will get','will find','attained','found','will start interacting with'
+                ,'will accept','accepted', 'used', 'will use', 'stealed', 'will steal'];
+    var objects=['Untested code','a gallon of lube','a picture of Javi','my self steem'
+                ,'experiments in mordor', 'a bunch of cooper', 'a typo', 'undocumented code'
+                , 'a paper without references', 'a NSFW meme', 'a deprecated library in the release', ''];
+    var endings=['the day of the pilots',', right?','.',', ass follows.','.',', just like your momma!'];
+
+
+    return subjects[Math.round(Math.random()*(subjects.length-1))]
+            +' '+verbs[Math.round(Math.random()*(verbs.length-1))]
+            +' '+objects[Math.round(Math.random()*(objects.length-1))]
+            +endings[Math.round(Math.random()*(endings.length-1))];
+}
 
 var thomasKilmannClassifications = ["avoiding", "competing", "accomodating", "compromising", "collaborating"];
 
@@ -23,8 +104,8 @@ var teacher = {
 
 var gameId;
 var versionId;
-var sessionId;
-var trackingCode = process.env.TRACKING_CODE || '';
+var activityId;
+var classId;
 var addThomasKilmannData = process.env.ADD_THOMAS_KILMANN_DATA || '';
 
 /**
@@ -46,22 +127,34 @@ var getStatementsFromDir = function (dir) {
     };
 
     var dirFiles = [];
-    filesystem.readdirSync(path.join(__dirname, dir)).forEach(function (file) {
+    var files = [];
 
-        file = path.join(dir, file);
+    var currentdir = path.join(__dirname, dir);
+    console.log();
+    if(filesystem.lstatSync(currentdir).isDirectory()){
+        files = filesystem.readdirSync(currentdir);
+        for(var i = 0; i < files.length; i++){
+            files[i] = path.join(currentdir, files[i]);
+        }
+    }else{
+        files.push(currentdir);
+    }
+
+    for(var i = 0; i < files.length; i++){
+        var file = files[i];
 
         if (log) {
             console.log("Reading: " + file);
         }
 
-        var data = JSON.parse(filesystem.readFileSync(path.join(__dirname, file), options));
+        var data = JSON.parse(filesystem.readFileSync(file, options));
 
         var statements = [];
         data.forEach(function (trace) {
             statements.push(trace);
         });
         dirFiles.push(statements);
-    });
+    }
 
 
     if (log) {
@@ -167,9 +260,10 @@ var signUp = function (name, password, role, callback) {
         },
         json: true
     }, function (err, httpResponse, body) {
-        if (err || httpResponse.statusCode !== 200) {
+        if (err || !httpResponse || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t signup', name, 'Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t signup', name, 'Err:', err, 'Status code:',
+                    httpResponse ? httpResponse.statusCode : -1, 'Body', body);
             }
             return callback(err);
         }
@@ -233,12 +327,12 @@ var createNewGame = function (authToken, callback) {
     });
 };
 
-var createNewSessionGame = function (authToken, gameId, versionId, callback) {
+var createNewClass = function (authToken, callback) {
     request({
-        uri: host + 'api/proxy/gleaner/games/' + gameId + '/versions/' + versionId + '/sessions',
+        uri: host + 'api/proxy/gleaner/classes',
         method: 'POST',
         body: {
-            name: 'Test Session'
+            name: 'Test Class',
         },
         headers: {
             Authorization: authToken
@@ -247,18 +341,52 @@ var createNewSessionGame = function (authToken, gameId, versionId, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t create a new session Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t create a new class Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+            }
+            return callback(err);
+        }
+
+        classId = body._id;
+
+        if (log) {
+            console.log('Test class created successfully');
+        }
+        callback(null, body);
+    });
+};
+
+var createNewActivity = function (authToken, gameId, versionId, classId, callback) {
+    request({
+        uri: host + 'api/proxy/gleaner/activities/',
+        method: 'POST',
+        body: {
+            name: 'Test Activity',
+            gameId: gameId,
+            versionId: versionId,
+            classId: classId
+        },
+        headers: {
+            Authorization: authToken
+        },
+        json: true
+    }, function (err, httpResponse, body) {
+        if (err || httpResponse.statusCode !== 200) {
+            if (log) {
+                console.log('Didn\'t create a new activity Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
             }
             return callback(err);
         }
 
         if (log) {
-            console.log('Test session created successfully');
+            console.log('Test activity created successfully');
         }
 
-        sessionId = body._id;
+        activityId = body._id;
+
+        console.log("Tracking code is: " + body.trackingCode);
+
         request({
-            uri: host + 'api/proxy/gleaner/sessions/' + sessionId,
+            uri: host + 'api/proxy/gleaner/activities/' + activityId,
             method: 'PUT',
             body: {
                 allowAnonymous: true
@@ -283,9 +411,9 @@ var createNewSessionGame = function (authToken, gameId, versionId, callback) {
     });
 };
 
-var startSession = function (authToken, sessionId, callback) {
+var startActivity = function (authToken, sessionId, callback) {
     request({
-        uri: host + 'api/proxy/gleaner/sessions/' + sessionId + '/event/start',
+        uri: host + 'api/proxy/gleaner/activities/' + sessionId + '/event/start',
         method: 'POST',
         body: {
             allowAnonymous: true
@@ -297,13 +425,13 @@ var startSession = function (authToken, sessionId, callback) {
     }, function (err, httpResponse, body) {
         if (err || httpResponse.statusCode !== 200) {
             if (log) {
-                console.log('Didn\'t start the session Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
+                console.log('Didn\'t start the activity Err:', err, 'Status code:', httpResponse.statusCode, 'Body', body);
             }
             return callback(err);
         }
 
         if (log) {
-            console.log('Session started successfully');
+            console.log('Activity started successfully');
         }
         callback(null, body);
     });
@@ -408,31 +536,169 @@ var setupTeacherOperations = function (callback) {
 
             var authToken = 'Bearer ' + body.user.token;
             teacher.authToken = authToken;
-            createNewSessionGame(authToken, gameId, versionId, function (err, body) {
+
+            createNewClass(authToken, function (err, body) {
                 if (err) {
                     if (log) {
-                        console.log('Failed to create a new session', err);
+                        console.log('Failed to create a new Class', err);
                     }
                     return callback(err);
                 }
 
-                startSession(authToken, sessionId, function (err, body) {
+                if (log) {
+                    console.log('Class created', body);
+                }
+
+                createNewActivity(authToken, gameId, versionId, classId, function (err, body) {
                     if (err) {
                         if (log) {
-                            console.log('Failed start the session', gameId, err);
+                            console.log('Failed to create a new activity', err);
                         }
                         return callback(err);
                     }
 
-                    callback(null, body);
+                    startActivity(authToken, activityId, function (err, body) {
+                        if (err) {
+                            if (log) {
+                                console.log('Failed start the session', gameId, err);
+                            }
+                            return callback(err);
+                        }
+
+                        callback(null, body);
+                    });
                 });
             });
         });
     });
 };
 
-if (!trackingCode) {
 
+var sendStatementsFromDir = function(dir){
+    var statementsFromDir = getStatementsFromDir(dir);
+
+    statementsFromDir.forEach(function (statements) {
+        sendStatementsToCollector(trackingCode, statements, function (err, res) {
+            if (err) {
+                if (log) {
+                    console.log('Failed to setup the teacher operations', err);
+                }
+            }
+            else {
+                if (log) {
+                    console.log('Statements sent, result', res);
+                }
+            }
+        })
+    });
+};
+
+var sendRandomAccessibleTrace = function(){
+    if(getRandomInt(0,1)){
+        tracker.Accessible.Accessed(getRandomString(), getRandomInt(0,4));
+    }else{
+        tracker.Accessible.Skipped(getRandomString(), getRandomInt(0,4));
+    }
+};
+
+var sendRandomAlternativeTrace = function(){
+    if(getRandomInt(0,1)){
+        tracker.setSuccess(getRandomInt(0,1) ? true : false);
+    }
+
+    if(getRandomInt(0,1)){
+        tracker.Alternative.Selected(getRandomString(), getRandomPhrase(), getRandomInt(0,5));
+    }else{
+        tracker.Alternative.Unlocked(getRandomString(), getRandomPhrase(), getRandomInt(0,5));
+    }
+};
+
+var sendRandomCompletableTrace = function(){
+    switch(getRandomInt(0,2)){
+        case 0: 
+            tracker.Completable.Initialized(getRandomString(), getRandomInt(0,8));
+            break;
+        case 1: 
+            tracker.Completable.Progressed(getRandomString(), getRandomInt(0,8), getRandomInt(0,10)/10.0);
+            break;
+        case 2: 
+        default:
+            tracker.Completable.Completed(getRandomString(), getRandomInt(0,8)
+                ,getRandomInt(0,1) ? true : false, getRandomInt(0,10)/10.0); 
+            break;
+    }
+};
+
+var sendRandomGameObjectTrace = function(){
+    if(getRandomInt(0,1)){
+        tracker.GameObject.Interacted(getRandomString(), getRandomInt(0,3));
+    }else{
+        tracker.GameObject.Used(getRandomString(), getRandomInt(0,3));
+    }
+};
+
+var sendRandomTrace = function (callback){
+    switch(getRandomInt(1,4)){
+        case 1:
+            sendRandomAccessibleTrace();
+            break;
+        case 2:
+            sendRandomAlternativeTrace();
+            break;
+        case 3:
+            sendRandomCompletableTrace();
+            break;
+        case 4:
+        default:
+            sendRandomGameObjectTrace();
+            break;
+    }
+
+    console.log('Asking to flush: ' + tracker.queue.length 
+                +  ' traces,\tBlocks pending: ' + tracker.tracesPending.length
+                +  ' traces,\tBlocks unlogged: ' + tracker.tracesUnlogged.length);
+    tracker.Flush(function(response, error){
+        callback(error, response);
+    });
+};
+
+var sendStatementsRandom = function (callback){
+    tracker.settings.host = host;
+    tracker.settings.batch_size = batchSize;
+    tracker.settings.debug = false;
+    tracker.settings.trackingCode = trackingCode;
+
+    tracker.Start(function(result, error){
+        if(error){
+            console.log('Unable to start');
+            return callback(result);
+        }
+
+        setInterval(function(){
+            sendRandomTrace(function(err, result){
+                if(err){
+                    console.log("Error sending trace");
+                }else{
+                    console.log("Trace sent");
+                }
+            })
+        }, 1000 / frequency);
+    });
+};
+
+var sendTraces = function(method, callback){
+    switch(method){
+        case 'stored':
+            sendStatementsFromDir(statementsDir, callback);
+            break;
+        case 'random':
+        default:
+            sendStatementsRandom(callback);
+            break;
+    }
+};
+
+var obtainTrackingCode = function(callback){
     setupDeveloperOperations(function (err, body) {
         if (err) {
             if (log) {
@@ -457,39 +723,27 @@ if (!trackingCode) {
                 console.log('Success performing the teacher operations', err);
             }
 
-            var statementsFromDir = getStatementsFromDir(statementsDir);
-
-            statementsFromDir.forEach(function (statements) {
-                sendStatementsToCollector(trackingCode, statements, function (err, res) {
-                    if (err) {
-                        if (log) {
-                            console.log('Failed to setup the teacher operations', err);
-                        }
-                    }
-                    else {
-                        if (log) {
-                            console.log('Statements sent, result', res);
-                        }
-                    }
-                })
-            });
+            callback(err, body);
         });
     });
-} else {
-    var statementsFromDir = getStatementsFromDir(statementsDir);
+};
 
-    statementsFromDir.forEach(function (statements) {
-        sendStatementsToCollector(trackingCode, statements, function (err, res) {
-            if (err) {
-                if (log) {
-                    console.log('Failed to setup the teacher operations', err);
-                }
-            }
-            else {
-                if (log) {
-                    console.log('Statements sent, result', res);
-                }
-            }
-        })
-    });
+var sendTracesCallback = function(error, result){
+    if(error){
+        console.log(error);
+    }else{
+        console.log(result);
+    }
 }
+
+if (!trackingCode) {
+    obtainTrackingCode(function(err, result){
+        sendTraces(method, sendTracesCallback);
+    });
+}else{
+     sendTraces(method, sendTracesCallback);
+}
+
+
+
+//sendStatementsFromDir(statementsDir);
